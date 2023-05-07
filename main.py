@@ -4,7 +4,6 @@ from Camera import camera
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -21,13 +20,12 @@ def zones():
 
 @app.route('/camera0')
 def camera0():
-    return Response(camera.generate_frames, mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
+    return Response(camera.generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='4040', debug=True)
+
 
 
 
