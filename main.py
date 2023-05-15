@@ -17,10 +17,15 @@ def control():
 def zones():
     return render_template('zones.html')
 
+@app.route("/detected_zone")
+def detected_text():
+    return Response(camera.get_detect_area())
+
 
 @app.route('/camera0')
 def camera0():
     return Response(camera.generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 
 if __name__ == '__main__':
